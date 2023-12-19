@@ -1,8 +1,8 @@
-const Products = require("../models/products");
+const Product = require("../models/product");
 
 exports.index = async (req, res) => {
   try {
-    const products = await Products.find();
+    const products = await Product.find();
     res.status(200).json(products);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -11,7 +11,7 @@ exports.index = async (req, res) => {
 
 exports.create = async (req, res) => {
   try {
-    const product = await Products.create(req.body);
+    const product = await Product.create(req.body);
     console.log(product);
     res.status(201).send(product);
   } catch (error) {
