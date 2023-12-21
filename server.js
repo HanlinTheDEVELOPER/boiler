@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1", router);
 
 router.use(authRoutes_v1);
-router.use("/products", productRoutes_v1);
+router.use("/product", productRoutes_v1);
 
 app.listen(3000, () => {
   console.log("Node App started");

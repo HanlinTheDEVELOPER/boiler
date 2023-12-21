@@ -2,7 +2,7 @@ const Product = require("../models/product");
 
 exports.index = async (req, res) => {
   try {
-    const products = await Product.find();
+    const products = await Product.find().populate("uploadedBy", "email");
     res.status(200).json(products);
   } catch (error) {
     res.status(500).json({ error: error.message });

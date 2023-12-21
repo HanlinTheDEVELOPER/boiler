@@ -1,3 +1,4 @@
+const e = require("express");
 const { Schema, mongoose } = require("mongoose");
 
 const userSchema = new Schema(
@@ -13,6 +14,13 @@ const userSchema = new Schema(
       minlength: 6,
       // select: false,
     },
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
+    reset_password_token: String,
+    token_expire_time: Date,
   },
   {
     timestamps: true,

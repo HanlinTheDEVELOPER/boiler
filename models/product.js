@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
-
+const { Schema, model } = mongoose;
 /**
  * Schema for product documents in MongoDB.
  * Defines required fields and types for product name, price,
  * description, category, and image.
  */
-const productSchema = new mongoose.Schema(
+const productSchema = new Schema(
   {
     name: {
       type: String,
@@ -28,11 +28,15 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: [true, "Product image is required"],
     },
+    uploadedBy: {
+      type: Schema.Types.ObjectId,
+      ref: "users",
+    },
   },
   {
     timestamps: true,
   }
 );
 
-const Products = mongoose.model("products", productSchema);
+const Products = model("products", productSchema);
 module.exports = Products;
